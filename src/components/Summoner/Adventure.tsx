@@ -7,15 +7,14 @@ import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 import { fromWei } from 'web3-utils'
 import { DUNGEONS, secondsToString } from '../../constants'
 import useDungeon from '../../hooks/useDungeon'
+import Transfer from './Transfer'
 interface SummonerCardProps {
     summoner: Summoner
 }
 
 export default function SummonerAdventureCard({ summoner }: SummonerCardProps): JSX.Element {
     const { exp, adventure, nextAdventure, levelUp } = useRarity()
-
     const { library, chainId } = useActiveWeb3React()
-
     const windowVisible = useIsWindowVisible()
 
     const [state, setState] = useState<{ actual: string; nextLvl: string; nextAdventure: number }>({
@@ -72,7 +71,6 @@ export default function SummonerAdventureCard({ summoner }: SummonerCardProps): 
 
     const fetchLog = useCallback(async () => {
         const summonerLog = await log(summoner.id, dungeon)
-        console.log(summonerLog)
         setDungeonAvailable(summonerLog * 1000 < Date.now())
     }, [log, summoner, dungeon])
 
@@ -118,6 +116,7 @@ export default function SummonerAdventureCard({ summoner }: SummonerCardProps): 
                         <h1>{CLASSES[summoner._class].name}</h1>
                     </div>
                 </div>
+                <Transfer summoner={summoner} />
                 <div className="px-8 text-left text-white text-md font-bold">
                     <div className="flex justify-between items-center my-2">
                         <span>Summoner:</span>
