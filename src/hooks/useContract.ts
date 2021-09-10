@@ -6,6 +6,7 @@ import { getContract } from '../utils'
 import RARITY_ABI from '../constants/abis/rarity.json'
 import GOLD_ABI from '../constants/abis/gold.json'
 import ATTRIBUTES_ABI from '../constants/abis/attributes.json'
+import SKILLS_ABI from '../constants/abis/skills.json'
 import MULTIADVENTURE_ABI from '../constants/abis/multiadventure.json'
 import DAILYCARE_ABI from '../constants/abis/daycare.json'
 import DUNGEON_ABI from '../constants/abis/dungeon.json'
@@ -17,6 +18,7 @@ import {
     GOLD_CONTRACTS,
     MULTIADVENTURE_CONTRACT,
     RARITY_CONTRACTS,
+    SKILLS_CONTRACT
 } from '../constants'
 
 export function useContract(
@@ -50,6 +52,11 @@ export function useRarityGoldContract(): Contract | null {
 export function useRarityAttributesContract(): Contract | null {
     const { chainId } = useActiveWeb3React()
     return useContract(chainId ? ATTRIBUTES_CONTRACT[chainId] : undefined, ATTRIBUTES_ABI)
+}
+
+export function useRaritySkillsContract(): Contract | null {
+    const { chainId } = useActiveWeb3React()
+    return useContract(chainId ? SKILLS_CONTRACT[chainId] : undefined, SKILLS_ABI)
 }
 
 export function useMultiAdventureContract(): Contract | null {

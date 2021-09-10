@@ -38,6 +38,12 @@ function AppBar(): JSX.Element {
                                                 <h1>Stats</h1>
                                             </a>
                                             <a
+                                                href={'/skills'}
+                                                className="uppercase py-3 px-1 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis whitespace-nowrap"
+                                            >
+                                                <h1>Skills</h1>
+                                            </a>
+                                            <a
                                                 href={'/adventures'}
                                                 className="uppercase py-3 px-1 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis whitespace-nowrap"
                                             >
